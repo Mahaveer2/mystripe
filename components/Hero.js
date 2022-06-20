@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 function Hero() {
 
@@ -26,7 +26,10 @@ function Hero() {
       <input onChange={(e) => setRange(e.target.value)} type="range" id="points" name="points" min="0" className='range'  max="100"/>
       <h2 className='text-xl'>${range * 2}</h2>
       <div class="ml-3 inline-flex justify-center rounded-md w-full">
-      <a href={range} className='p-3 rounded-lg bg-green text-white flex items-center justify-center mr-6 w-full focus:ring-red-2'>Order Now</a>
+        <Link href={`${range}`}>
+      <a  className='p-3 rounded-lg bg-green text-white flex items-center justify-center mr-6 w-full focus:ring-red-2'>Order Now</a>
+      </Link>
+
       </div> 
       </div>
     </div>
