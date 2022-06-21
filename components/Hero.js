@@ -3,7 +3,7 @@ import Link from 'next/link';
 
 function Hero() {
 
-  const [range,setRange] = useState(null);
+  const [range,setRange] = useState(2);
   return (
 <div className=" bg-indigo-500 flex justify-center flex-col">
   <div className="max-w-7xl flex  mx-auto py-12 px-4 sm:px-6 gap-20 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between lg:flex-row flex-col ">
@@ -23,7 +23,7 @@ function Hero() {
       <h2 className='text-lg mt-10'>
         {range * 100} followers
       </h2>
-      <input onChange={(e) => setRange(e.target.value)} type="range" id="points" name="points" min="0" className='range'  max="100"/>
+      <input onChange={(e) => setRange(e.target.value)} type="range" value={range} id="points" name="points" min="1" className='range'  max="100"/>
       <h2 className='text-xl'>${range * 2}</h2>
       <div class="ml-3 inline-flex justify-center rounded-md w-full">
         <Link href={`${range}`}>
@@ -97,60 +97,94 @@ function Hero() {
   <p className='text-white text-xl text-center '>
   These are some of our popular packages, Choose one and get to the checkout page instantly!
   </p>
-  <div className='mt-3 p-4  flex gap-10 justify-center'>
-    <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
-      <a href='#'>
+  <div className='mt-3 p-3 flex gap-2 justify-center'>
+    <div className='bg-white hover:bg-opacity-10 p-10 rounded-lg bg-opacity-5'>
+      <Link href='1'>
+      <a >
       <h1 className='text-2xl text-white'>Buy</h1>
       <h1 className='text-3xl text-white'>100</h1>
       <h1 className='text-xl text-white'>Tiktok</h1>
       <h1 className='text-2xl text-white'>Followers</h1>
-      <h1 className='text-3xl text-white'>$2</h1>
+      <h1 className='text-3xl text-white'>$1</h1>
       </a>
+      </Link>
     </div>
     <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
-      <a href='#'>
+      <Link href='2'>
+      <a >
       <h1 className='text-2xl text-white'>Buy</h1>
       <h1 className='text-3xl text-white'>100</h1>
       <h1 className='text-xl text-white'>Tiktok</h1>
       <h1 className='text-2xl text-white'>Followers</h1>
       <h1 className='text-3xl text-white'>$2</h1>
       </a>
+      </Link>
     </div>
     <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
-      <a href='#'>
+      <Link href='4'>
+      <a >
       <h1 className='text-2xl text-white'>Buy</h1>
-      <h1 className='text-3xl text-white'>100</h1>
+      <h1 className='text-3xl text-white'>400</h1>
       <h1 className='text-xl text-white'>Tiktok</h1>
       <h1 className='text-2xl text-white'>Followers</h1>
-      <h1 className='text-3xl text-white'>$2</h1>
+      <h1 className='text-3xl text-white'>$4</h1>
       </a>
+      </Link>
     </div>
     <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
-      <a href='#'>
+      <Link href='8'>
+      <a >
       <h1 className='text-2xl text-white'>Buy</h1>
-      <h1 className='text-3xl text-white'>100</h1>
+      <h1 className='text-3xl text-white'>800</h1>
       <h1 className='text-xl text-white'>Tiktok</h1>
       <h1 className='text-2xl text-white'>Followers</h1>
-      <h1 className='text-3xl text-white'>$2</h1>
+      <h1 className='text-3xl text-white'>$8</h1>
       </a>
+      </Link>
     </div>
     <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
-      <a href='#'>
+      <Link href='10'>
+      <a >
       <h1 className='text-2xl text-white'>Buy</h1>
-      <h1 className='text-3xl text-white'>100</h1>
+      <h1 className='text-3xl text-white'>1000</h1>
       <h1 className='text-xl text-white'>Tiktok</h1>
       <h1 className='text-2xl text-white'>Followers</h1>
-      <h1 className='text-3xl text-white'>$2</h1>
+      <h1 className='text-3xl text-white'>$10</h1>
       </a>
+      </Link>
     </div>
     <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
-      <a href='#'>
+      <Link href='12'>
+      <a >
       <h1 className='text-2xl text-white'>Buy</h1>
-      <h1 className='text-3xl text-white'>100</h1>
+      <h1 className='text-3xl text-white'>1200</h1>
       <h1 className='text-xl text-white'>Tiktok</h1>
       <h1 className='text-2xl text-white'>Followers</h1>
-      <h1 className='text-3xl text-white'>$2</h1>
+      <h1 className='text-3xl text-white'>$12</h1>
       </a>
+      </Link>
+    </div>
+    <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
+      <Link href='14'>
+      <a >
+      <h1 className='text-2xl text-white'>Buy</h1>
+      <h1 className='text-3xl text-white'>1400</h1>
+      <h1 className='text-xl text-white'>Tiktok</h1>
+      <h1 className='text-2xl text-white'>Followers</h1>
+      <h1 className='text-3xl text-white'>$14</h1>
+      </a>
+      </Link>
+    </div>
+    <div className='bg-white hover:bg-opacity-10 p-5 rounded-lg bg-opacity-5'>
+      <Link href='16'>
+      <a >
+      <h1 className='text-2xl text-white'>Buy</h1>
+      <h1 className='text-3xl text-white'>1600</h1>
+      <h1 className='text-xl text-white'>Tiktok</h1>
+      <h1 className='text-2xl text-white'>Followers</h1>
+      <h1 className='text-3xl text-white'>$16</h1>
+      </a>
+      </Link>
     </div>
     
   </div>
