@@ -43,7 +43,7 @@ function Cart() {
     },
   }}
 >
-      {(data == '0'||data > 150) ? (
+      {(data == '0'||data > 100 || !!(data % 1)) ? (
         <div>
           <Nav></Nav>
           <h1 className='text-center text-2xl mt-5'>Invalid Value</h1>

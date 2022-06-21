@@ -3,7 +3,7 @@ import NextNProgress from "nextjs-progressbar";
 import { AnimatePresence,motion } from 'framer-motion';
 
 function MyApp({ Component, pageProps }) {
-  return <><NextNProgress color='indigo'/>
+  return <><NextNProgress color='#9010e0'/>
   <AnimatePresence>
   <motion.div
   initial="initial"
