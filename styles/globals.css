@@ -5,6 +5,10 @@
   background :#00c2a4 linear-gradient(180deg, #00c2a4 0%, #008f79 100%) repeat-x;
 }
 
+.bg-hero{
+  background:#9d7cff linear-gradient(180deg, #9d7cff 0%, #7749ff 100%) repeat-x !Important;
+}
+
 .span-underline{
   background:linear-gradient(to right, #fb83fa 0%,#427aff 100%);
   padding: 2px ;

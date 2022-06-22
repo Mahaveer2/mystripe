@@ -10,26 +10,26 @@ function Hero() {
   const [username,setUsername] = useState('');
   const router = useRouter();
   return (
-<div className=" bg-indigo-500 flex justify-center flex-col">
-  <div className="max-w-7xl flex  mx-auto py-12 px-4 sm:px-6 gap-20 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between lg:flex-row flex-col ">
+<div className=" bg-hero flex justify-center flex-col">
+  <div className="max-w-7xl h-[80vh] flex  mx-auto py-12 px-4 sm:px-6 gap-20 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between lg:flex-row flex-col ">
     <h2 className="text-3xl tracking-tight text-white sm:text-4xl">
-      <span className="block w-[400px]">
+      <span className="block w-[400px] tracking-wide mb-3">
       Buy TikTok Followers Instant HQ Followers
       </span>
       <span className="block w-[450px] text-white text-base font-medium">
       Buy TikTok followers from TikRoyal.com $4.0/100 followers. Instant HQ Followers, Secure Payment & 24/7 friendly support.
       </span>
     </h2>
-    <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
-      <div className='p-3 relative align-center w-[300px] h-[250px] flex felx-col justify-center gap-5 bg-white rounded-lg flex flex-col'>
-      <div className='bg-gray-200 rounded-lg left-0 p-3 w-full h-15 absolute top-0'>
+    <div className="mt-8 flex justify-center lg:mt-0 lg:flex-shrink-0">
+      <div className='p-3 relative align-center w-[300px] h-[250px] flex felx-col justify-center gap-4 bg-white rounded-lg flex flex-col'>
+      <div className='bg-green-50 text-center rounded-lg rounded-b-none left-0 p-3 w-full h-15 absolute top-0'>
         <h2>Tiktok Followers</h2>
       </div>
-      <h2 className='text-lg mt-10'>
+      <h2 className='text-lg font-bold text-center mt-10'>
         {range * 100} followers
       </h2>
       <input onChange={(e) => setRange(e.target.value)} type="range" value={range} id="points" name="points" min="1" className='range range-primary h-'  max="100"/>
-      <h2 className='text-xl'>${range * 2}</h2>
+      <h2 className='text-xl text-center'>${range * 2}</h2>
       <div class="ml-3 inline-flex justify-center rounded-md w-full">
        
       <label for='12' class="w-full btn modal-button mr-6 bg-green border-none">Order Now</label>
@@ -42,7 +42,9 @@ function Hero() {
       <Modal 
       id='12' 
       title='Select Username' 
-      content={<input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />}
+      content={
+        <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Type here" class="input input-bordered input-primary w-full border-2" />
+      }
       button={<Link href={`${range}?username=${username}`}><l className='btn outline-none bg-green border-none'>Check Out</l></Link>}
       />
   <div class="py-12 bg-white">
@@ -200,7 +202,6 @@ function Hero() {
     
   </div>
   <div className='flex justify-end mr-[120px]'> 
-  <button className='p-3 bg-white rounded-3xl w-[160px] cursor-pointer'>Order Now - $5</button>
   </div>
 </div>
 <Faq/>

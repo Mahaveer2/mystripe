@@ -22,7 +22,7 @@ function Nav() {
   });
 
   return (
-      <nav className={!navbar ? ('bg-gradient-to-b from-purple-400 to-indigo-500 px-2 sm:px-4 py-2.5 text-white dark:bg-gray-800'+ (active && ' h-[40vh]')) :'px-2 py-2.5 fixed bg-white z-10  w-full border-b border-gray-200 top-0' + (active && ' h-[40vh]')}> 
+      <nav className={!navbar ? ('bg-transparent fixed w-full top-0 px-2 sm:px-4 py-2.5 text-white dark:bg-gray-800'+ (active && ' h-[40vh]')) :'px-2 sm:px-4 py-2.5 text-white dark:bg-gray-800 bg-gradient-to-b  fixed top-0  w-full  z-10 from-purple-400 to-indigo-500 z-' + (active && ' h-[40vh]')}> 
   <div className="container flex flex-wrap justify-between items-center mx-auto">
     <Link href="/" >
     <a className="flex items-center">
@@ -38,28 +38,28 @@ function Nav() {
       <ul className={!navbar ? 'white-t flex  flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium':'flex  flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium'}>
         <li>
           <Link className='' href="/" >
-          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white '} aria-current="page">Home</a>
+          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white '} aria-current="page">Home</a>
           </Link>
           {router.asPath =='/' && <span className='span-underline'></span>}
         </li>
          <li>
           <a href="#" onClick={() => window.scroll({
             top:2000, behavior: 'smooth'
-          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'}>About</a>
+          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white'}>About</a>
         </li>
         <li>
           <a href="#" onClick={() => window.scroll({
             top:400, behavior: 'smooth'
-          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'}>Services</a>
+          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white'}>Services</a>
         </li>
         <li>
           <a href="#" onClick={() => window.scroll({
             top:800, behavior: 'smooth'
-          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white'}>Pricing</a>
+          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white'}>Pricing</a>
         </li>
         <li>
           <Link href="/contact" >
-          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white '}>Contact</a>
+          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white '}>Contact</a>
           </Link>
           {router.asPath =='/contact' && <span className='span-underline'></span>}
         </li>
