@@ -37,9 +37,10 @@ function Nav() {
     <div className={active ? ' w-full md:block md:w-auto':'md:block hidden'} id="mobile-menu">
       <ul className={!navbar ? 'white-t flex  flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium':'flex  flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium'}>
         <li>
-          <Link className='text-red-200' href="/" >
-          <a className={!navbar ? 'block py-2 pr-4 pl-3 '+(router.asPath =='/' && 'underline')+' text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white '+(router.asPath =='/' && 'underline')} aria-current="page">Home</a>
+          <Link className='' href="/" >
+          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white '} aria-current="page">Home</a>
           </Link>
+          {router.asPath =='/' && <span className='span-underline'></span>}
         </li>
          <li>
           <a href="#" onClick={() => window.scroll({
@@ -58,8 +59,9 @@ function Nav() {
         </li>
         <li>
           <Link href="/contact" >
-          <a className={!navbar ? 'block py-2 pr-4 pl-3 '+(router.asPath =='/contact' && 'underline')+' text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white '+(router.asPath =='contact' && 'underline')}>Contact</a>
+          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:p-0 dark:text-white '}>Contact</a>
           </Link>
+          {router.asPath =='/contact' && <span className='span-underline'></span>}
         </li>
       </ul>
     </div>

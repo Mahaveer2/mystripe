@@ -56,7 +56,7 @@ function Cart() {
         <Nav/>
       <div className=''>
       
-      <h1 className='text-3xl text-center mt-[60px]'>Confirm your payment</h1>
+      <h1 className='text-3xl text-center mt-[60px]'>Confirm your payment <br/>Mr. {router.query.username}</h1>
       <div className='flex justify-center'>
       <div className='w-1/2 mt-4 p-3 shadow flex justify-center items-center gap-2 flex-col'>
         <h2 className='text-2xl'><span className='text-indigo-500'>{data * 100 }</span> Followers</h2>

@@ -4,6 +4,7 @@ import Hero from '../components/Hero'
 import Nav from '../components/Nav'
 import styles from '../styles/Home.module.css'
 import { AnimatePresence,motion } from 'framer-motion';
+import Modal from '../components/Modal'
 
 export default function Home() {
   return (

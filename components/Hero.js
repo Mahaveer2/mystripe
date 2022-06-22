@@ -1,9 +1,14 @@
 import React, { useState } from 'react'
 import Link from 'next/link';
+import Faq from './Faq';
+import Modal from './Modal';
+import { useRouter } from 'next/router';
 
 function Hero() {
 
   const [range,setRange] = useState(2);
+  const [username,setUsername] = useState('');
+  const router = useRouter();
   return (
 <div className=" bg-indigo-500 flex justify-center flex-col">
   <div className="max-w-7xl flex  mx-auto py-12 px-4 sm:px-6 gap-20 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between lg:flex-row flex-col ">
@@ -23,17 +28,23 @@ function Hero() {
       <h2 className='text-lg mt-10'>
         {range * 100} followers
       </h2>
-      <input onChange={(e) => setRange(e.target.value)} type="range" value={range} id="points" name="points" min="1" className='range'  max="100"/>
+      <input onChange={(e) => setRange(e.target.value)} type="range" value={range} id="points" name="points" min="1" className='range range-primary h-'  max="100"/>
       <h2 className='text-xl'>${range * 2}</h2>
       <div class="ml-3 inline-flex justify-center rounded-md w-full">
-        <Link href={`${range}`}>
-      <a  className='p-3 rounded-lg bg-green text-white flex items-center justify-center mr-6 w-full focus:ring-red-2'>Order Now</a>
-      </Link>
+       
+      <label for='12' class="w-full btn modal-button mr-6 bg-green border-none">Order Now</label>
 
       </div> 
       </div>
     </div>
   </div>
+  
+      <Modal 
+      id='12' 
+      title='Select Username' 
+      content={<input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Type here" class="input input-bordered input-primary w-full max-w-xs" />}
+      button={<Link href={`${range}?username=${username}`}><l className='btn outline-none bg-green border-none'>Check Out</l></Link>}
+      />
   <div class="py-12 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
     <div class="lg:text-center">
@@ -192,39 +203,7 @@ function Hero() {
   <button className='p-3 bg-white rounded-3xl w-[160px] cursor-pointer'>Order Now - $5</button>
   </div>
 </div>
-<div class="faq_block bg-white p-5 flex flex-col justify-center">
-  <details class="faq_item cursor-pointer bg-gray-100 p-5 ">
-    <summary class="faq_question">How To Buy TikTok Followers?</summary>
-    <div class="faq_answer">
-    At TikRoyal, the ordering process is super simple, Just fill in your username, select your followers package, and finally, choose a payment method.
-
-The most recommended followers packages are: 100 followers, 200 followers, 300  followers, 500 followers, and 1,000 followers.
-    </div>
-  </details>
-  <details class="faq_item cursor-pointer bg-gray-100 p-5 ">
-    <summary class="faq_question">Is It Good To Buy TikTok Followers?</summary>
-    <div class="faq_answer">
-Buying TikTok followers is a favorite growth strategy by influencers worldwide. 
-
-Therefore, it’s beneficial for TikTok pages of all popularity levels alike.</div>
-  </details>
-  <details class="faq_item cursor-pointer bg-gray-100 p-5 ">
-    <summary class="faq_question">Can I Order TikTok Followers For A Private Profile?</summary>
-    <div class="faq_answer">Your profile must be set to ‘Public’ until the delivery is complete.</div>
-  </details>
-  <details class="faq_item cursor-pointer bg-gray-100 p-5 ">
-    <summary class="faq_question">Do I Have To Give My Password?</summary>
-    <div class="faq_answer">No. We only need your TikTok username and email; 
-
-we’ll never ask for your password.</div>
-  </details>
-  <details class="faq_item cursor-pointer bg-gray-100 p-5 ">
-    <summary class="faq_question">Why Should I Choose TikRoyal?</summary>
-    <div class="faq_answer">Our vision at TikRoyal is to help you get the best followers on the market with free exposure.
-
-We provide low-cost, top-quality followers for hundreds of customers every day.</div>
-  </details>
-</div>
+<Faq/>
 <footer class="text-center lg:text-left  text-white ">
   <div class="flex justify-center items-center lg:justify-between p-6 border-b border-gray-300">
     <div class="mr-12 hidden lg:block">
