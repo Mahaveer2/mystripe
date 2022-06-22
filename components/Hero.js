@@ -1,18 +1,37 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Link from 'next/link';
 import Faq from './Faq';
 import Modal from './Modal';
 import { useRouter } from 'next/router';
+import { useRecoilState, useSetRecoilState } from 'recoil';
+import { cart } from '../store/store';
 
 function Hero() {
 
   const [range,setRange] = useState(2);
   const [username,setUsername] = useState('');
+  const addToCart = useSetRecoilState(cart);
   const router = useRouter();
+  const [cartData,setCart] = useRecoilState(cart);
+
+  const addCart = () => {
+    var existingEntries = JSON.parse(localStorage.getItem("cartData"));
+    if(existingEntries == null) existingEntries = [];
+
+    existingEntries.push({
+      package:range,
+      username
+    });
+
+    localStorage.setItem('cartData',JSON.stringify(existingEntries));
+    setCart(JSON.parse(localStorage.getItem('cartData')));
+  }
+
+
   return (
 <div className=" bg-hero flex justify-center flex-col">
-  <div className="max-w-7xl h-[80vh] flex  mx-auto py-12 px-4 sm:px-6 gap-20 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between lg:flex-row flex-col ">
-    <h2 className="text-3xl tracking-tight text-white sm:text-4xl">
+  <div className="max-w-7xl mt-10 h-[80vh] flex  mx-auto py-12 px-4 sm:px-6 gap-20 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between lg:flex-row flex-col ">
+    <h2 className="text-3xl mt-5 md:mt-2 tracking-tight text-white sm:text-4xl">
       <span className="block w-[400px] tracking-wide mb-3">
       Buy TikTok Followers Instant HQ Followers
       </span>
@@ -43,9 +62,12 @@ function Hero() {
       id='12' 
       title='Select Username' 
       content={
-        <input type="text" onChange={(e) => setUsername(e.target.value)} placeholder="Type here" class="input input-bordered input-primary w-full border-2" />
+        <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} placeholder="Type here" class="loading input input-bordered input-success w-full border-2" />
       }
-      button={<Link href={`${range}?username=${username}`}><l className='btn outline-none bg-green border-none'>Check Out</l></Link>}
+      button={<button for='12' className='btn outline-none bg-green border-none' onClick={(e) => {
+        addCart()
+        setUsername('')
+      }}>Add to Cart</button>}
       />
   <div class="py-12 bg-white">
   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

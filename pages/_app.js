@@ -1,10 +1,15 @@
 import '../styles/globals.css'
 import NextNProgress from "nextjs-progressbar";
 import { AnimatePresence,motion } from 'framer-motion';
+import {
+  RecoilRoot,
+} from 'recoil';
 
 function MyApp({ Component, pageProps }) {
-  return <><NextNProgress color='#9010e0'/>
-  <AnimatePresence>
+  return <div>
+    <RecoilRoot>
+    <NextNProgress color='#9010e0'/>
+
   <motion.div
   initial="initial"
   animate="in"
@@ -21,8 +26,12 @@ function MyApp({ Component, pageProps }) {
     },
   }}
 >
-    <Component {...pageProps} /></motion.div></AnimatePresence>
-  </>
+
+    <Component {...pageProps} />
+    </motion.div>
+    </RecoilRoot>
+    </div>
+
 }
 
 export default MyApp

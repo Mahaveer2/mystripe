@@ -1,11 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
+import { useRecoilValue } from 'recoil';;
+import { useRecoilState } from 'recoil'
+import { cart } from '../store/store'
 
 function Nav() {
+  const [cartData,setCart] = useRecoilState(cart);
+
+  useEffect(() => {
+    var existingEntries = JSON.parse(localStorage.getItem("cartData"));
+    setCart(existingEntries);
+  },[])
   const router = useRouter();
   const [navbar,setNavbar] = useState(false);
   const [active,setActive] = useState(false);
+  const cartIndex = useRecoilValue(cart);
 
   const changeBackground = () => {
     console.log(window.scrollY)
@@ -22,51 +32,66 @@ function Nav() {
   });
 
   return (
-      <nav className={!navbar ? ('bg-transparent fixed w-full top-0 px-2 sm:px-4 py-2.5 text-white dark:bg-gray-800'+ (active && ' h-[40vh]')) :'px-2 sm:px-4 py-2.5 text-white dark:bg-gray-800 bg-gradient-to-b  fixed top-0  w-full  z-10 from-purple-400 to-indigo-500 z-' + (active && ' h-[40vh]')}> 
-  <div className="container flex flex-wrap justify-between items-center mx-auto">
-    <Link href="/" >
-    <a className="flex items-center">
-        <img src="https://uploads.tikroyal.com/cdn/gallery/r6pb26sifc6pdd4m0bab.png" className="mr-3 h-6 sm:h-9" alt="Flowbite Logo" />
-
-    </a></Link>
-    <button onClick={() => setActive(!active)} data-collapse-toggle="mobile-menu" type="button" className="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu" aria-expanded="false">
-      <span className="sr-only">Open main menu</span>
-      <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
-      <svg className="hidden w-6 h-6" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd"></path></svg>
-    </button>
-    <div className={active ? ' w-full md:block md:w-auto':'md:block hidden'} id="mobile-menu">
-      <ul className={!navbar ? 'white-t flex  flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium':'flex  flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium'}>
-        <li>
-          <Link className='' href="/" >
-          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white '} aria-current="page">Home</a>
-          </Link>
-          {router.asPath =='/' && <span className='span-underline'></span>}
-        </li>
-         <li>
-          <a href="#" onClick={() => window.scroll({
-            top:2000, behavior: 'smooth'
-          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent  md:p-0 dark:text-white'}>About</a>
-        </li>
-        <li>
-          <a href="#" onClick={() => window.scroll({
-            top:400, behavior: 'smooth'
-          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white'}>Services</a>
-        </li>
-        <li>
-          <a href="#" onClick={() => window.scroll({
-            top:800, behavior: 'smooth'
-          })} className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white'}>Pricing</a>
-        </li>
-        <li>
-          <Link href="/contact" >
-          <a className={!navbar ? 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:text-white-700 md:p-0 ' : 'block py-2 pr-4 pl-3 text-white bg-blue-700 rounded md:bg-transparent md:p-0 dark:text-white '}>Contact</a>
-          </Link>
-          {router.asPath =='/contact' && <span className='span-underline'></span>}
-        </li>
-      </ul>
+    <div class={`navbar h-[10px] text-neutral-content fixed top-0 bg-transparent ${navbar && ('bg-hero z-10 fixed top-0')} ${active && 'z-10'}`}>
+    <div class="px-2 mx-2 navbar-start">
+      <span class="text-lg font-bold">
+              <Link href={'/'}><a><img width={150} src='https://uploads.tikroyal.com/cdn/gallery/r6pb26sifc6pdd4m0bab.png'/></a></Link>
+            </span>
+    </div> 
+    <div class={`px-2 transition ease-in-out mx-2 navbar-center flex z-10 ${active && 'bg-black w-full h-[100vh] fixed flex-col top-0 left-[-10px] z-100'}`}>
+    <a style={{fontSize:'40px'}} className='text-4xl lg:hidden absolute top-[2%] cursor-pointer z-10 right-[15%]'>
+    <label className="btn bg-transparent  border-none btn-circle swap swap-rotate">
+        <input onClick={() => setActive(!active)} type="checkbox" />
+        <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
+        <svg className="swap-on fill-current" xmlns="http://www.w3.org/2000/svg" width={32} height={32} viewBox="0 0 512 512"><polygon points="400 145.49 366.51 112 256 222.51 145.49 112 112 145.49 222.51 256 112 366.51 145.49 400 256 289.49 366.51 400 400 366.51 289.49 256 400 145.49" /></svg>
+      </label>
+    </a>
+      <div className={`lg:visible lg:flex ${!active && 'invisible'} items-stretch z-10 ${active  && 'flex visible flex-col mt-[40%] fts space-y-3'} `}>
+      <div className='relative left-[20px] mr-5'>
+      <Link href='/'>
+        <a className={`btn btn-ghost btn-sm rounded-btn ${active && 'text-2xl'}`}>
+                Home
+              </a> 
+              </Link>{router.asPath == '/' && <span className='span-underline'></span>}
+              </div>
+        <a onClick={() => window.scrollTo({
+                top:2000,
+                behavior: 'smooth'
+              })} className={`btn btn-ghost btn-sm rounded-btn ${active && 'text-2xl'}`}>
+                About
+              </a> 
+        <a  onClick={() => window.scrollTo({
+                top:400,
+                behavior: 'smooth'
+              })} className={`btn btn-ghost btn-sm rounded-btn ${active && 'text-2xl'}`}>
+                Services
+              </a> 
+              <a onClick={() => window.scrollTo({
+                top:900,
+                behavior: 'smooth'
+              })} className={`btn btn-ghost btn-sm rounded-btn ${active && 'text-2xl'}`}>
+                Pricing
+              </a>
+              <li className='relative list-none'>
+              <Link href='contact'>
+        <a className={`btn btn-ghost btn-sm rounded-btn ${active && 'text-2xl'}`}>
+                Contact
+              </a>
+              </Link>
+              {router.asPath == '/contact' && <span className='span-underline'></span>}
+              </li>
+      </div>
+    </div> 
+    <div class="navbar-end relative">
+      <Link href='cart'>
+      <button class="btn btn-square btn-ghost">
+      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+  <path strokeLinecap="round" strokeLinejoin="round" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+</svg><span className='bg-red-500 top-[5px] right-[5px] rounded-3xl py-1 px-1 text-white absolute flex justify-center items-center'>{cartIndex?.length}</span>
+      </button> 
+      </Link>
     </div>
   </div>
-</nav>
   )
 }
 

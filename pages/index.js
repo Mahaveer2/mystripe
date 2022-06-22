@@ -5,8 +5,17 @@ import Nav from '../components/Nav'
 import styles from '../styles/Home.module.css'
 import { AnimatePresence,motion } from 'framer-motion';
 import Modal from '../components/Modal'
+import { useEffect } from 'react'
+import { useRecoilState } from 'recoil'
+import { cart } from '../store/store'
 
 export default function Home() {
+  const [cartData,setCart] = useRecoilState(cart);
+
+  useEffect(() => {
+    var existingEntries = JSON.parse(localStorage.getItem("cartData"));
+    setCart(existingEntries);
+  },[])
   return (
     <div>
       <motion.div
